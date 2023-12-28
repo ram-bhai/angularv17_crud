@@ -1,1 +1,26 @@
-<p>create works!</p>
+<div class="container">
+    <h1 class="text-center">Create new post here..</h1>
+    <a href="http://localhost:4200/post/index" routerLink="/post/index" class="btn btn-warning">Back</a>
+
+    <form [formGroup]="postCreationForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" formControlName="title" class="form-control">
+            <div *ngIf="formControls['title'].touched && formControls['title'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['title'].errors && formControls['title'].errors['required']">
+                    Title is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="body">Post:</label>
+            <input type="text" id="body" formControlName="body" class="form-control">
+            <div *ngIf="formControls['body'].touched && formControls['body'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['body'].errors && formControls['body'].errors['required']">
+                    Post is required.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!postCreationForm.valid">Submit</button>
+    </form>
+</div>

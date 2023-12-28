@@ -20,8 +20,14 @@ export class IndexComponent implements OnInit{
   ngOnInit(): void {
       this.postService.getPosts().subscribe((data:any)=>{
         this.posts = data;
-        console.log(this.posts);
       })
+  }
+
+  deletePost(id:number){
+    this.postService.delete(id).subscribe((data:any)=>{
+      this.posts = this.posts.filter((item)=> item.id !== id);
+      alert("Post has been deleted successfully !!");
+    })
   }
 
 }
