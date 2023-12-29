@@ -34,12 +34,10 @@ export class CreateComponent implements OnInit{
   }
 
   submit(){
-    console.log(this.postCreationForm.value);
     this.postService.createPosts(this.postCreationForm.value).subscribe((data:any)=>{
       alert("Post has been added successfully!!");
       this.router.navigateByUrl('post/index');
     })
-    
   }
 
 }
